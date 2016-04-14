@@ -63,9 +63,16 @@ UniversalAnalyticsPlugin.prototype.addTransactionItem = function(transactionId, 
   cordova.exec(success, error, 'UniversalAnalytics', 'addTransactionItem', [transactionId, name ,sku, category, price, quantity, currencyCode]);
 };
 
-/* automatic uncaught exception tracking */
-UniversalAnalyticsPlugin.prototype.enableUncaughtExceptionReporting = function (enable, success, error) {
-  cordova.exec(success, error, 'UniversalAnalytics', 'enableUncaughtExceptionReporting', [enable]);
+/* Opts out of tracking */
+UniversalAnalyticsPlugin.prototype.trackingOptOut = function(success, error) { /* cemerson 2015081x */
+  cordova.exec(success, error, 'UniversalAnalytics', 'trackingOptOut', []);
+  console.log('UniversalAnalyticsPlugin: trackingOptOut');
+};
+
+/*  stop tracking */
+UniversalAnalyticsPlugin.prototype.stopTracking = function(success, error) { /* cemerson 2015081x */
+  cordova.exec(success, error, 'UniversalAnalytics', 'stopTracking', []);
+  console.log('UniversalAnalyticsPlugin: stopTracking');
 };
 
 module.exports = new UniversalAnalyticsPlugin();
